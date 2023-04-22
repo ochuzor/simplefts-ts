@@ -12,7 +12,8 @@
         "test": "jest",
         "lint": "eslint ./src",
         "format": "prettier --config .prettierrc 'src/**/*.ts' --write",
-        "prepare": "husky install"
+        "prepare": "husky install",
+        "dev": "tsnd --respawn src/index.ts"
     },
     "author": "Chinedu Eze <ochuzor@gmail.com>",
     "devDependencies": {
@@ -27,9 +28,13 @@
         "lint-staged": "^13.2.1",
         "prettier": "2.8.7",
         "ts-jest": "^29.1.0",
+        "ts-node-dev": "^2.0.0",
         "typescript": "^5.0.4"
     },
     "lint-staged": {
-        "*.ts": ["npm run lint -- --cache --fix", "npm test"]
+        "*.ts": [
+            "npm run lint -- --cache --fix",
+            "npm test"
+        ]
     }
 }

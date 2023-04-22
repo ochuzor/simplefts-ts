@@ -1,0 +1,1 @@
+export { loadDocuments } from './document';
