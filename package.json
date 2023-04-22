@@ -1,0 +1,17 @@
+{
+    "name": "simplefts-ts",
+    "version": "1.0.0",
+    "description": "a typescript port of simplefts from https://github.com/akrylysov/simplefts written in Go.",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "files": [
+        "/dist"
+    ],
+    "scripts": {
+        "build": "tsc"
+    },
+    "author": "Chinedu Eze <ochuzor@gmail.com>",
+    "devDependencies": {
+        "typescript": "^5.0.4"
+    }
+}
