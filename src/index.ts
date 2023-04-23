@@ -19,7 +19,7 @@ async function main() {
   const idx: Index = search.add({}, docs);
   console.log(`Indexed ${docs.length} documents in ${0}s`);
 
-  const query = 'Small wild cat';
+  const query = 'the donut';
   const matchedIDs = search.search(idx, query);
   console.log(`Search found ${matchedIDs.length} documents in ${2}s`);
 

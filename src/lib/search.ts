@@ -1,8 +1,9 @@
 import { ID, Index, Document } from './document';
 import { analyze } from './tokenizer';
+import { reduce } from './utils';
 
 export function add(idx: Index, docs: Document[]): Index {
-  docs.map((doc) => {
+  return reduce(docs)((idx, doc) => {
     const tokens = analyze(doc.Text);
     tokens.forEach((token) => {
       const ids = idx[token] || [];
@@ -10,18 +11,20 @@ export function add(idx: Index, docs: Document[]): Index {
         idx[token] = ids.concat(doc.Id);
       }
     });
-  });
 
-  return idx;
+    return idx;
+  }, idx);
 }
 
 export function intersection(a: ID[], b: ID[]): ID[] {
-  console.log('intersection =>', a, b);
-
-  return [];
+  return a.concat(b);
 }
 
 export function search(index: Index, text: string): ID[] {
-  console.log(index, text);
-  return [];
+  const tokens = analyze(text);
+
+  return reduce(tokens)((acc, token) => {
+    const ids = index[token] || [];
+    return intersection(acc, ids);
+  }, [] as ID[]);
 }
