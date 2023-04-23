@@ -1,8 +1,16 @@
 import { ID, Index, Document } from './document';
+import { analyze } from './tokenizer';
 
 export function add(idx: Index, docs: Document[]): Index {
-  // docs.map((doc) => {});
-  console.log('docs =>', docs);
+  docs.map((doc) => {
+    const tokens = analyze(doc.Text);
+    tokens.forEach((token) => {
+      const ids = idx[token] || [];
+      if (!ids.includes(doc.Id)) {
+        idx[token] = ids.concat(doc.Id);
+      }
+    });
+  });
 
   return idx;
 }

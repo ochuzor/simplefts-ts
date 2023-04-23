@@ -34,7 +34,7 @@
     "lint-staged": {
         "*.ts": [
             "npm run lint -- --cache --fix",
-            "npm run test"
+            "npm run test -- src/__tests__"
         ]
     }
 }
