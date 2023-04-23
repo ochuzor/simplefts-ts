@@ -11,17 +11,24 @@ async function main() {
     flag.Parse()
   */
 
+  const query = 'the donut';
+
   console.log('Starting simplefts');
 
+  let start = performance.now();
   const docs = loadDocuments('../sample/wiki.json');
-  console.log(`Loaded ${docs.length} documents in ${0}s`);
+  let end = performance.now();
+  console.log(`Loaded ${docs.length} documents in ${end - start} ms`);
 
+  start = performance.now();
   const idx: Index = search.add({}, docs);
-  console.log(`Indexed ${docs.length} documents in ${0}s`);
+  end = performance.now();
+  console.log(`Indexed ${docs.length} documents in ${end - start} ms`);
 
-  const query = 'the donut';
+  start = performance.now();
   const matchedIDs = search.search(idx, query);
-  console.log(`Search found ${matchedIDs.length} documents in ${2}s`);
+  end = performance.now();
+  console.log(`Search found ${matchedIDs.length} documents in ${end - start} ms`);
 
   matchedIDs.forEach((id) => {
     const doc = docs.find(({ Id }) => id === Id);
